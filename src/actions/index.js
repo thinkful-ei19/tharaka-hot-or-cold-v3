@@ -1,20 +1,23 @@
-export const ADD_GUESS = 'ADD_GUESS';
-export const addGuess = guess => ({
-    type: ADD_GUESS,
+
+export const TRY_GUESS = 'TRY_GUESS';
+export const tryGuess = (feedback, guess) => ({
+    type: TRY_GUESS,
+    feedback,
     guess
-});
+})
 
 export const ADD_AURAL = 'ADD_AURAL';
-export const addAural = aural => ({
+export const addAural = auralStatus => ({
     type: ADD_AURAL,
-    aural
+    auralStatus
 })
 
-export const ADD_FEEDBACK = 'ADD_FEEDBACK';
-export const addFeedback = feedback => ({
-    type: ADD_FEEDBACK,
-    feedback
+export const RESET_STORE = 'RESET_STORE';
+export const resetStore = () => ({
+    type: RESET_STORE,
 })
+
+
 
 
 

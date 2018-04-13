@@ -1,4 +1,4 @@
-import {ADD_GUESS, ADD_FEEDBACK, ADD_AURAL} from '../actions';
+import {TRY_GUESS, ADD_AURAL, RESET_STORE} from '../actions';
 
 const initialState = {
     guesses: [],
@@ -10,22 +10,28 @@ const initialState = {
 
 export const guessReducer = (state=initialState, action) => {
     // Add code which handles each action here
-    if (action.type === ADD_GUESS) {
-        return {
-            ...state,
-            guesses: [...state.guesses, action.guess]
-        } 
-    } else if(action.type === ADD_AURAL) {
-        return {
-            ...state,
 
-        }
-    } else if(action.type === ADD_FEEDBACK) {
-        return {
+    if (action.type === TRY_GUESS) {
+        return Object.assign({}, {
             ...state,
-            feedback: action.feedback
-        }
+            feedback: action.feedback,
+            guesses: [...state.guesses, action.guess]
+        }) 
+    } else if(action.type === ADD_AURAL) {
+        return Object.assign({}, {
+            ...state,
+            auralStatus: action.auralStatus
+        })
+    } else if(action.type === RESET_STORE) {
+        return Object.assign({},{
+            ...state,
+            guesses: [],
+            feedback: 'Make your guess!',
+            auralStatus: '',
+            correctAnswer: Math.round(Math.random() * 100) + 1
+        })
     }
+
 
     return state;
 };
