@@ -1,4 +1,5 @@
 import {createStore} from 'redux';
-import {guessReducer} from './reducers';
 
-export default createStore(guessReducer);
+import reducer from './reducers';
+
+export default createStore(reducer);
